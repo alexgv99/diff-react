@@ -1,0 +1,17 @@
+# Don't check auto-generated stuff into git
+coverage
+build
+node_modules
+dist
+stats.json
+.cache
+
+# Cruft
+.DS_Store
+npm-debug.log
+.idea
+.nodered/.config.json
+.vscode/settings.json
+yarn-error.log
+yarn.lock
+nm.tar.gz
