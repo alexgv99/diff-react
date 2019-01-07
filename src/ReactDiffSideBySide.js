@@ -20,7 +20,7 @@ class ReactDiff extends React.Component {
 			};
 
 			let linha = (
-				<span key={index} style={spanStyle}>
+				<span key={index} style={spanStyle} className={`linha ${part.removed ? 'removed' : ''}`}>
 					{part.value}
 				</span>
 			);
@@ -31,9 +31,9 @@ class ReactDiff extends React.Component {
 					const sizeLeft = diff[index - 1].count;
 					const sizeRight = part.count;
 					if (sizeLeft < sizeRight) {
-						linha = repeat('\n', Math.abs(sizeLeft - sizeRight));
+						linha = <span key={index}>{repeat('\n', Math.abs(sizeLeft - sizeRight))}</span>;
 					} else {
-						linha = '';
+						linha = <span key={index}>{''}</span>;
 					}
 				}
 			}
@@ -46,7 +46,7 @@ class ReactDiff extends React.Component {
 				backgroundColor: part.added ? 'lightgreen' : 'transparent'
 			};
 			let linha = (
-				<span key={index} style={spanStyle}>
+				<span key={index} style={spanStyle} className={`linha ${part.added ? 'added' : ''}`}>
 					{part.value}
 				</span>
 			);
@@ -57,30 +57,33 @@ class ReactDiff extends React.Component {
 					const sizeLeft = part.count;
 					const sizeRight = diff[index + 1].count;
 					if (sizeLeft > sizeRight) {
-						linha = repeat('\n', Math.abs(sizeLeft - sizeRight));
+						linha = <span key={index}>{repeat('\n', Math.abs(sizeLeft - sizeRight))}</span>;
 					} else {
-						linha = '';
+						linha = <span key={index}>{''}</span>;
 					}
 				}
 			}
+
 			return linha;
 		});
 
 		return (
-			<table>
-				<tr style={{ verticalAlign: 'top' }}>
-					<td>
-						<pre className="diff-result" style={{ backgroundColor: 'lightgray' }}>
-							{resultLeft}
-						</pre>
-					</td>
-					<td>
-						<pre className="diff-result" style={{ backgroundColor: 'lightgray' }}>
-							{resultRight}
-						</pre>
-					</td>
-				</tr>
-			</table>
+			<div style={{ height: '80vh' }}>
+				<table>
+					<tr style={{ verticalAlign: 'top' }}>
+						<td>
+							<pre className="diff-result" style={{ backgroundColor: 'lightgray' }}>
+								{resultLeft}
+							</pre>
+						</td>
+						<td>
+							<pre className="diff-result" style={{ backgroundColor: 'lightgray' }}>
+								{resultRight}
+							</pre>
+						</td>
+					</tr>
+				</table>
+			</div>
 		);
 	}
 }

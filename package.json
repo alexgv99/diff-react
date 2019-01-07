@@ -7,6 +7,7 @@
     "lodash": "^4.17.11",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-minimap": "^0.7.4",
     "react-scripts": "2.1.2"
   },
   "scripts": {
@@ -14,8 +15,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-		"prettier": "prettier --write \"**/*.js\"; exit 0;",
-		"lint": "eslint \"app/**/*.js\"; exit 0;"
+    "prettier": "prettier --write \"**/*.js\"; exit 0;",
+    "lint": "eslint \"app/**/*.js\"; exit 0;"
   },
   "eslintConfig": {
     "extends": "react-app"
